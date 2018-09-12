@@ -1,6 +1,6 @@
 CC=gcc
-#CFLAGS=-I. $(shell pkg-config --cflags --libs gstreamer-1.0 gstreamer-video-1.0 gstreamer-app-1.0 glib-2.0)
-CFLAGS=-I.
+CFLAGS=-I. -I../lib/nanopb/
+VPATH=../lib/nanopb
 OBJS=var.o pb_common.o pb_encode.o pb_decode.o main.o
 BINARY=mcu
 
@@ -19,4 +19,4 @@ $(BINARY): $(OBJS)
 .PHONY: clean
 
 clean: 
-	rm -f *.o core *.pb.h *pb.c $(BINARY)
+	rm -f *.o core *.pb.h *.pb.c $(BINARY)
