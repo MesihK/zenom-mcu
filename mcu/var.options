@@ -1,0 +1,3 @@
+VariableMessage.name	max_size:128
+VariableMessage.data	max_size:128
+VarMessages.messages	max_size:20

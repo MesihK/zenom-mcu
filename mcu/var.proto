@@ -1,0 +1,29 @@
+// Simple Zenom variable exchange protocol 
+
+syntax = "proto2";
+
+message VariableMessage {
+
+	enum VariableType {
+		LOG = 0;
+		CONTROL = 1;
+	}
+
+	enum DataType {
+		INT = 0;
+		BOOL = 1;
+		FLOAT = 2;
+	}
+
+    required string name = 1;
+	optional VariableType var_type = 2 [default = LOG]; //default is log variable
+	optional DataType data_type = 3 [default = INT]; //default is integer data type
+	optional int32 row = 4 [default = 1]; //default is 1x1 dimensional data
+	optional int32 collumn = 5 [default = 1]; //default is 1x1 dimensional data
+	required bytes data = 6;
+}
+
+message VarMessages {
+	repeated VariableMessage messages = 1;
+}
+

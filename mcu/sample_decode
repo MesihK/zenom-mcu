@@ -1,0 +1,1 @@
+echo 0a054d6573696832010d | xxd -r -p | protoc --decode VariableMessage var.proto
