@@ -26,6 +26,7 @@ int main()
          * so that you do not have garbage data from RAM in there.
          */
         VariableMessage message = VariableMessage_init_zero;
+        VarMessages msgs = VarMessages_init_zero;
         
         /* Create a stream that will write to our buffer. */
         pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
@@ -34,14 +35,18 @@ int main()
 		memcpy(message.name, "Mesih", sizeof("Mesih"));
 		message.data.size = 1;
 		message.data.bytes[0] = 13;
+
+		msgs.messages_count = 2;
+		msgs.messages[0] = message;
+		msgs.messages[1] = message;
         
         /* Now we are ready to encode the message! */
-        status = pb_encode(&stream, VariableMessage_fields, &message);
+        //status = pb_encode(&stream, VariableMessage_fields, &message);
+        status = pb_encode(&stream, VarMessages_fields, &msgs);
         message_length = stream.bytes_written;
         
         /* Then just check for any errors.. */
-        if (!status)
-        {
+        if (!status){
             printf("Encoding failed: %s\n", PB_GET_ERROR(&stream));
             return 1;
         }
@@ -61,22 +66,24 @@ int main()
     {
         /* Allocate space for the decoded message. */
         VariableMessage message = VariableMessage_init_zero;
+        VarMessages msgs = VarMessages_init_zero;
         
         /* Create a stream that reads from the buffer. */
         pb_istream_t stream = pb_istream_from_buffer(buffer, message_length);
         
         /* Now we are ready to decode the message. */
-        status = pb_decode(&stream, VariableMessage_fields, &message);
+        //status = pb_decode(&stream, VariableMessage_fields, &message);
+        status = pb_decode(&stream, VarMessages_fields, &msgs);
         
         /* Check for errors... */
-        if (!status)
-        {
+        if (!status){
             printf("Decoding failed: %s\n", PB_GET_ERROR(&stream));
             return 1;
         }
         
         /* Print the data contained in the message. */
         printf("Your var name: %s, data: %d!\n", message.name, (int)message.data.bytes[0]);
+        printf("Your var count: %d, data: %d!\n", msgs.messages_count, (int)msgs.messages[0].data.bytes[0]);
     }
     
     return 0;

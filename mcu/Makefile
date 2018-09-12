@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. -I../lib/nanopb/
+CFLAGS=-I. -I../lib/nanopb/ -DPB_ENABLE_MALLOC
 VPATH=../lib/nanopb
 OBJS=var.o pb_common.o pb_encode.o pb_decode.o main.o
 BINARY=mcu
