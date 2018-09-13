@@ -1,7 +1,7 @@
 # This file defines the nanopb-specific options for the message defined in .proto file
 
-VariableMessage.name	max_size:20
-VariableMessage.data	max_size:100
+VarMsg.name	max_size:20
+VarMsg.data	max_size:100
 
 #VarMessages.messages	type:FT_STATIC
-VarMessages.messages	max_count:10
+VarMsgs.msg	max_count:10

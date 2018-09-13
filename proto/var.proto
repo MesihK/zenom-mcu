@@ -2,7 +2,7 @@
 
 syntax = "proto2";
 
-message VariableMessage {
+message VarMsg {
 
 	enum VariableType {
 		LOG = 0;
@@ -23,7 +23,7 @@ message VariableMessage {
 	required bytes data = 6;
 }
 
-message VarMessages {
-	repeated VariableMessage messages = 1;
+message VarMsgs {
+	repeated VarMsg msg = 1;
 }
 
