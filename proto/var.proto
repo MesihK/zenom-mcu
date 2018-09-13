@@ -27,3 +27,17 @@ message VarMsgs {
 	repeated VarMsg msg = 1;
 }
 
+message ReqVar {
+	repeated string name = 1;
+}
+
+message SubscribeVar {
+	repeated string name = 1;
+	required int32 period_ms = 2;
+}
+
+message StopSubscription {
+	optional string name = 1;
+}
+
+

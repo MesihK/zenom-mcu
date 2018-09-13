@@ -5,3 +5,11 @@ VarMsg.data	max_size:100
 
 #VarMessages.messages	type:FT_STATIC
 VarMsgs.msg	max_count:10
+
+ReqVar.name max_size:20
+ReqVar.name max_count:10
+
+SubscribeVar.name max_size:20
+SubscribeVar.name max_count:10
+
+StopSubscription.name max_size:20
