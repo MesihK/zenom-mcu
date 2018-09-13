@@ -1,11 +1,11 @@
 CC=gcc
 CFLAGS=-I. -I../lib/nanopb/ -DPB_ENABLE_MALLOC
-VPATH=../lib/nanopb
+VPATH=../lib/nanopb ../proto
 OBJS=var.o pb_common.o pb_encode.o pb_decode.o main.o
 BINARY=mcu
 
 %.pb.c: %.proto
-	protoc $^ --nanopb_out=.
+	protoc -I ../proto $^ --nanopb_out=.
 
 %.o: %.pb.c
 	$(CC) -c -o $@ $^ $(CFLAGS)
